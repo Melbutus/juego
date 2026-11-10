@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Che, ¿estás enojado? 😤➡️😊</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  .tarjeta {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0,0,0,.1);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  #seccion-formulario { display: none; animation: aparecer .5s ease; }
+  h1 { font-size: 26px; margin-top: 0; color: #333; text-align: center; }
+  h2 { font-size: 16px; color: #666; margin-bottom: 8px; margin-top: 20px; }
+  p.subtitulo { text-align: center; color: #666; font-size: 16px; margin-bottom: 25px; }
+  
+  .contenedor-botones {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    position: relative;
+    height: 60px;
+  }
+
+  .btn-principal {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  
+  #btn-si { background: #4CAF50; color: white; box-shadow: 0 5px 15px rgba(76,175,80,.3); z-index: 10; }
+  #btn-si:hover { transform: scale(1.05); background: #45a049; }
+  
+  #btn-no { background: #f44336; color: white; box-shadow: 0 5px 15px rgba(244,67,54,.3); position: absolute; left: 55%; }
+
+  label {
+    display: block; padding: 10px 14px; margin: 6px 0; border-radius: 10px;
+    background: #f4f9f9; cursor: pointer; transition: background .2s;
+    font-size: 15px; border: 1px solid transparent;
+  }
+  label:hover { background: #e0f2f1; border-color: #b2dfdb; }
+  input[type="radio"], input[type="checkbox"] { margin-right: 10px; accent-color: #26a69a; }
+  
+  textarea {
+    width: 100%; padding: 12px; border: 2px solid #e0f2f1; border-radius: 10px;
+    font-family: inherit; font-size: 15px; resize: vertical; min-height: 80px;
+    margin-top: 8px; outline: none; background: #fafafa;
+  }
+  textarea:focus { border-color: #26a69a; background: white; }
+
+  button[type="submit"] {
+    margin-top: 25px; width: 100%; padding: 15px; font-size: 18px; font-weight: bold;
+    background: #26a69a; color: white; border: none; border-radius: 15px;
+    cursor: pointer; transition: background .2s, transform .1s;
+    box-shadow: 0 5px 15px rgba(38,166,154,.3);
+  }
+  button[type="submit"]:hover { background: #00897b; transform: scale(1.02); }
+
+  @keyframes aparecer { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+  <div class="tarjeta">
+    
+    <div id="seccion-pregunta">
+      <h1>Che, ¿estás enojado/a? 😤</h1>
+      <p class="subtitulo">Sé sincero/a, no te voy a juzgar... 🤨</p>
+      <div class="contenedor-botones" id="zona-botones">
+        <button id="btn-si" class="btn-principal">Sí, una banda 😠</button>
+        <button id="btn-no" class="btn-principal">No, todo piola 😎</button>
+      </div>
+    </div>
+
+    <div id="seccion-formulario">
+      <h1>Dale, contame 👇</h1>
+      
+      <!-- ACÁ ESTÁ TU CORREO -->
+      <form action="https://formsubmit.co/melbutus@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="¡Nueva respuesta de Desenojar!">
+        
+        <h2>1. ¿Qué te hace bajar los decibeles? (Elegí UNA)</h2>
+        <label><input type="radio" name="calma" value="comida" required> 🍕 Morfar algo rico</label>
+        <label><input type="radio" name="calma" value="musica"> 🎵 Escuchar música a full</label>
+        <label><input type="radio" name="calma" value="abrazos"> 🤗 Un abrazo de oso</label>
+        <label><input type="radio" name="calma" value="dormir"> 😴 Dormir una siesta eterna</label>
+        <label><input type="radio" name="calma" value="series"> 📺 Maratonear series</label>
+
+        <h2>2. ¿Qué te viene bien cuando estás quemado/a? (Podés elegir varias)</h2>
+        <label><input type="checkbox" name="extra_chocolate" value="chocolate"> 🍫 Chocolate</label>
+        <label><input type="checkbox" name="extra_meme" value="meme"> 😂 Memes de gatitos</label>
+        <label><input type="checkbox" name="extra_silencio" value="silencio"> 🤫 Que me dejen tranqui</label>
+        <label><input type="checkbox" name="extra_hablar" value="hablar"> 🗣️ Que me escuchen</label>
+
+        <h2>3. Decime algo mássssss</h2>
+        <textarea name="texto_libre" placeholder="Escribí acá lo que quieras, sin filtro..."></textarea>
+
+        <button type="submit">Mandar todo 💌</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const seccionPregunta = document.getElementById('seccion-pregunta');
+    const seccionFormulario = document.getElementById('seccion-formulario');
+    const btnSi = document.getElementById('btn-si');
+    const btnNo = document.getElementById('btn-no');
+    
+    const frasesNo = [
+      "No, todo piola 😎", "¿Seguro? 🤨", "Pensalo bien 😬",
+      "Mentira, sí 😏", "Dale, aceptá 😅", "No me podés atrapar 🏃‍♂️"
+    ];
+    let intentos = 0;
+
+    function escaparBoton() {
+      intentos++;
+      btnNo.innerText = frasesNo[intentos % frasesNo.length];
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 80);
+      btnNo.style.position = 'fixed';
+      btnNo.style.left = x + 'px';
+      btnNo.style.top = y + 'px';
+    }
+
+    btnNo.addEventListener('mouseover', escaparBoton);
+    btnNo.addEventListener('touchstart', (e) => { e.preventDefault(); escaparBoton(); });
+
+    btnSi.addEventListener('click', () => {
+      seccionPregunta.style.display = 'none';
+      seccionFormulario.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
